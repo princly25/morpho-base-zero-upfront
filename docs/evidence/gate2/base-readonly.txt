@@ -1,0 +1,4 @@
+{"level":"info","time":"10-26 21:17:16","event":"quoting.startup","bot":"blue-liquidation","chainId":8453,"mode":"readonly","venues":["lifi"]}
+{"level":"info","time":"10-26 21:17:18","event":"readonly.poll_complete","bot":"blue-liquidation","chainId":8453,"mode":"readonly","block":"53130045","candidates":541,"audit":{"requests":{"eth_chainId":1,"eth_blockNumber":1,"eth_call":2},"denied":{}}}
+{"level":"info","time":"10-26 21:17:21","event":"readonly.poll_complete","bot":"blue-liquidation","chainId":8453,"mode":"readonly","block":"53130046","candidates":541,"audit":{"requests":{"eth_chainId":2,"eth_blockNumber":2,"eth_call":3},"denied":{}}}
+{"event":"readonly.audit","requests":{"eth_chainId":2,"eth_blockNumber":2,"eth_call":3},"denied":{}}

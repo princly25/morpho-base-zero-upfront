@@ -6,6 +6,10 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
+    "./readonly": {
+      "types": "./src/readonly.ts",
+      "default": "./src/readonly.ts"
+    },
     ".": {
       "types": "./src/index.ts",
       "default": "./src/index.ts"

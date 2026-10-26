@@ -1,13 +1,13 @@
-# Live readiness â€” LOCKED
+# Live readiness — LOCKED
 
-Date: 2026-10-26. Current gate: 0. **NOT READY. No mainnet send is authorized.**
+Date: 2026-10-26. Current gate: 3. **NOT READY. No mainnet send is authorized.**
 
 | Required proof | Status |
 | --- | --- |
 | Remote backup of this restart | PASS: exact source tree and fresh-clone recovery verified |
 | Gate 0 completion approval | User authorized continuation without routine gate questions |
 | Baseline install/build/lint/typecheck/test suites | PASS for Blue and dependencies; historical fork SKIPPED |
-| Signer-free readonly and zero signing/broadcasts | NOT IMPLEMENTED |
+| Signer-free readonly and zero signing/broadcasts | PASS: source/artifact tests and actual Base reads |
 | Correct chain and Morpho contracts verified onchain | NOT VERIFIED |
 | Deterministic shared Executor address/runtime hash | NOT VERIFIED |
 | Canonical native Base USDC, decimals and code | NOT VERIFIED |
@@ -28,6 +28,6 @@ Date: 2026-10-26. Current gate: 0. **NOT READY. No mainnet send is authorized.**
 | Secret scan before push | SEE VALIDATION; repeat for every push |
 | Gate 10 approval and separate Gate 11 authority | NOT GRANTED |
 
-No live transport is enabled by this project. The preserved upstream entrypoint
-itself can sign/send and must not be launched. Structural runtime separation and
-fail-closed mainnet controls are later work, not a Gate 0 success claim.
+No live transport is enabled by this project. The current entrypoint supports readonly observation and rejects all live modes.
+The original signer entrypoint is archived as non-executable text. Callback,
+economics, sponsorship and payout proofs remain later gates.

@@ -12,9 +12,11 @@ upstream behavior and does not authorize project execution.
 - Mainnet transactions, deployments, financial obligations and user-funded fallback
   still require separate explicit authority. General engineering autonomy does not
   satisfy the README's specific Gate 11 live-transaction authorization.
-- The checked-out application is unmodified upstream source. Its entrypoint creates
-  a signer and can broadcast. DO NOT run its start/deploy/seed scripts. Target
-  readonly configuration is a specification, not an implemented safety boundary yet.
+- The application entrypoint now supports readonly observation only. Live modes
+  hard-fail before sender construction. The former upstream signer entrypoint is
+  archived as non-executable text under docs/upstream; never restore it as startup.
+  Do not run upstream deploy/seed scripts. Run the documented readonly entrypoint
+  only after building and checking the read-only artifact tests.
 - No Base mainnet transaction, UserOperation, deployment, EOA funding, paid service,
   payment obligation, or fallback to user-funded gas is authorized.
 - Never request a private key for Gate 0 or readonly work.

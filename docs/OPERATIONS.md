@@ -78,3 +78,35 @@ There is no running bot/service at Gate 0. No background task or cloud deploymen
 was created. Future live shutdown and crash reconciliation must be implemented and
 tested before live readiness. Setting LIVE_ENABLED=false is target configuration,
 not a proven upstream safety mechanism at this checkpoint.
+
+## Gate 2 readonly operation
+
+After installing the pinned toolchain and building the app, run from the repo root:
+
+```powershell
+$env:CHAIN_ID = '8453'
+$env:EXECUTION_MODE = 'readonly'
+$env:READ_ONLY = 'true'
+$env:LIVE_ENABLED = 'false'
+$env:RPC_URL = 'https://mainnet.base.org'
+$env:ENABLE_LIFI = 'true'
+$env:OBSERVATION_POLLS = '2'
+node bots/blue-liquidation/dist/src/index.js
+```
+
+No private key, wallet/account, nonce state or funded address is required. Optional
+PROFIT_WALLET is a public recipient address, validated without possessing its key.
+EOA and sponsored startup are hard-locked, regardless of flags. Contradictory
+readonly/live flags are rejected. RPC transport denies all methods outside an
+explicit read allowlist, including signing, nonce reads and broadcasts.
+
+Finite runs exit after the configured polls. With OBSERVATION_POLLS unset, polling
+continues until SIGINT/SIGTERM and finishes the current poll before stopping. Poll
+errors are logged by class to avoid exposing authenticated URLs and the next poll
+retries. Public position observations append to ignored data/observations.jsonl.
+Restarting retains previous rows. Dedupe by market/borrower and observation block;
+repeated rows are observations, not separate revenue opportunities.
+
+Complete economic cost modeling is pending. Output economicNetProfit remains null
+and liveEligible false; hypothetical gross surplus uses protected minimum output
+only. No candidate is certified executable by readonly observations.

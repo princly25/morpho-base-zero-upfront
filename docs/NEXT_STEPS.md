@@ -1,19 +1,16 @@
 # Next steps
 
-Current gate: 2. Gate 1 validation passed; persist its checkpoint before new features.
+Current gate: 3. Gates 0–2 passed. Persist and verify Gate 2 before new engineering.
 
-1. Publish/fetch the reviewed Gate 1 platform fixes and evidence via the connector.
-2. Replace the startup dependency graph with a readonly entrypoint. Retain the old
-   sender implementation as isolated reference, unreachable from startup until
-   subsequent transport gates. Never initialize signer or nonce state in readonly.
-3. Make key requirements conditional on EOA plus live-enabled configuration, while
-   retaining hard-deny live controls until final authority. Reject contradictory flags.
-4. Reuse GraphQL discovery, onchain parameter resolution, fresh lens, sizing and
-   routing. Produce bounded durable observations with hypothetical economics marked
-   incomplete until complete cost modeling is implemented.
-5. Test no-key startup and a read-method allowlist; record zero signatures, nonce
-   reservations and broadcast attempts. Test recoverable API/RPC/rate-limit/timeout/
-   malformed/duplicate/stale candidate cases. Observe real Base using public reads.
-6. Build/lint/typecheck/test, update records, scan and publish each validated checkpoint.
+1. Publish the reviewed readonly code and public Base evidence; verify remote tree
+   and branch SHA, keeping the working tree clean.
+2. Inspect compiled contract metadata and pinned Solidity/settings. Recompile exact
+   creation/runtime code and independently derive CREATE2 address.
+3. Query Base chain ID, block/hash and Executor code from independent public RPCs at
+   the same block. Empty code, mismatch, wrong chain or disagreement must hard-block.
+4. Add deterministic identity tests and strict zero-pre-existing-balance checks for
+   all swept loan/collateral/intermediate tokens. Preserve upstream approvals/sweeps.
+5. Store chain/block/address/expected and actual runtime hashes/source/date in
+   VALIDATION.md. Test, scan, publish and verify the next checkpoint.
 
-Mainnet transactions, deployments, paid obligations and funded fallback stay locked.
+No mainnet broadcasts, deployments, financial obligations or funded EOA fallback.

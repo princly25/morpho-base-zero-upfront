@@ -2,7 +2,7 @@
 
 Date: 2026-10-26 UTC. Current gate: 0. These results do not establish a working bot.
 
-## Gate 0 completion â€” PASS
+## Gate 0 completion — PASS
 
 Remote checkpoint: 5ba7368f6050ae9e51e8bc88f2253effdad188fc, branch
 codex/morpho-base-zero-upfront, repository princly25/morpho-base-zero-upfront.
@@ -80,7 +80,7 @@ Install: SKIPPED. Build: SKIPPED. Lint: SKIPPED. Typecheck: SKIPPED.
 Unit/non-fixture/fork tests: SKIPPED. Gate 1 is not authorized.
 No scanner, signer, Base RPC transaction, deployment or paymaster experiment run.
 
-## Executor identity â€” NOT VALIDATED
+## Executor identity — NOT VALIDATED
 
 | Field | Value |
 | --- | --- |
@@ -89,7 +89,7 @@ No scanner, signer, Base RPC transaction, deployment or paymaster experiment run
 | Researched Executor | 0x844124693a429CB9eD04472a23d6aEBFd1395dFe |
 | Expected runtime code hash | NOT COMPILED |
 | Actual runtime code hash | NOT QUERIED |
-| Result | UNVERIFIED â€” execution prohibited |
+| Result | UNVERIFIED — execution prohibited |
 | Record date | 2026-10-26 |
 | Source commit | 08d0a415d6d027f7e401fd6a904b09bedb441668 |
 
@@ -113,3 +113,29 @@ No core financial logic, contract source or dependency versions changed.
 Historical Base liquidation fork integration is SKIPPED for missing archive URL and
 borrower fixture. It is not counted as a pass; deterministic callback proof remains
 Gate 4. No mainnet transaction, deployment or funded operation was performed.
+
+## Gate 2 completion - PASS
+
+884 tests in 69 files, full lint and relevant dependency/app typechecking pass.
+Production artifacts compile and exclude createSigner, privateKeyToAccount,
+createWalletClient, createPendingQueue and createBalanceMonitor. Readonly config
+never accesses a private key, even when a getter would throw. EOA/sponsored startup
+is unconditionally locked; readonly/live contradictions fail.
+
+The production CLI with an explicitly key-free environment recovers from malformed
+API data, HTTP 503 and a wrong-chain RPC response. A real local HTTP timeout followed
+by a successful guarded read passes. Forbidden methods never reach providers.
+Preserved API 429/502 retry plus duplicate/fresh-health/quote-error tests pass.
+An initial test expected a logger event in stdout although the logger uses stderr;
+the assertion was corrected and the full relevant suite rerun successfully.
+
+Real Base reads: blocks 53130045 and 53130046; 541 unique positions per poll, 1082
+observations. All fresh states were healthy, so no natural unhealthy sale quote was
+attempted. Audit: eth_chainId=2, eth_blockNumber=2, logical eth_call=3; no unsafe or
+denied calls. There is no signing/account/nonce facility in the runtime; RPC logs
+independently record zero sends/signing/nonce methods. No funded account or secret
+was required. See complete public records and tests under docs/evidence/gate2.
+
+No opportunity is counted as profit. Economic net remains null; liveEligible=false.
+This is not Executor identity, callback funding, sponsorship or payout proof. Core
+discovery/state/accrual/sizing/encoding/approvals/sweeps remain unchanged.

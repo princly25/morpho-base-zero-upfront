@@ -1,0 +1,34 @@
+{
+  "gate": 2,
+  "status": "PASS",
+  "recordedAt": "2026-10-26T21:25:00.187662+00:00",
+  "checks": {
+    "build": "PASS: production build runs in artifact regression",
+    "typecheck": "PASS for Blue and dependencies",
+    "lint": "PASS",
+    "unitTests": {
+      "status": "PASS",
+      "files": 69,
+      "tests": 884
+    },
+    "keylessProductionStartup": "PASS",
+    "productionArtifactWithoutSigningConstructors": "PASS",
+    "rpcSigningBroadcastAndNonceMethodsDenied": "PASS",
+    "apiMalformedResponseRecovery": "PASS",
+    "rpc503Recovery": "PASS",
+    "wrongChainNoObservationAndRecovery": "PASS",
+    "realRpcTimeoutThenSuccessfulRead": "PASS",
+    "graphql429And502Retry": "PASS (preserved upstream discovery tests)",
+    "duplicateCandidateDedupe": "PASS",
+    "staleApiCandidateHealthyOnchain": "PASS",
+    "quoteFailureRecovery": "PASS",
+    "realBaseObservation": "PASS; see base-summary.json"
+  },
+  "incomplete": [
+    "No natural unhealthy position was observed in the two real polls; real sale quote not exercised.",
+    "Economic net profitability is not yet modeled; no candidate is live-eligible.",
+    "Callback funding, runtime identity, payout and sponsorship proofs remain later gates."
+  ],
+  "signingProof": "No wallet/account/signer/nonce queue or broadcaster is constructed; production artifact tests exclude their constructors. Real RPC log independently records zero submit/sign/nonce methods.",
+  "costToUserUsdc": 0
+}

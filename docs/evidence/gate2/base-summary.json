@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-26T21:23:06.083886+00:00",
+  "chainId": 8453,
+  "rpc": "https://mainnet.base.org",
+  "executionMode": "readonly",
+  "privateKeyProvided": false,
+  "senderAccountCreated": false,
+  "sourceAccountEvidence": "Production-artifact test excludes account/signing/queue constructors; entrypoint constructs only guarded read client",
+  "polls": 2,
+  "blocks": [
+    "53130045",
+    "53130046"
+  ],
+  "observations": 1082,
+  "uniquePositions": 541,
+  "liquidatableObservations": 0,
+  "quotes": 0,
+  "reasons": {
+    "NOT_LIQUIDATABLE": 1082
+  },
+  "rpcAudit": {
+    "event": "readonly.audit",
+    "requests": {
+      "eth_chainId": 2,
+      "eth_blockNumber": 2,
+      "eth_call": 3
+    },
+    "denied": {}
+  },
+  "observationSha256": "e71407082cd38912db33a4f61bee4c27094c75fcbf43b8657c3562df41e4fd3d",
+  "liveEligible": false,
+  "economicNetProfit": "NOT_IMPLEMENTED; never counted as profitable",
+  "costToUserUsdc": 0,
+  "userFundedCapitalUsdc": 0,
+  "notes": [
+    "All observed positions freshly verified healthy; no natural unhealthy quote opportunity observed.",
+    "Two polls are 1082 observations, not 1082 opportunities.",
+    "Signatures and nonce reservations unavailable by runtime construction, not inferred solely from RPC logs."
+  ]
+}

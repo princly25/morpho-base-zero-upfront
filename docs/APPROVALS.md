@@ -17,7 +17,7 @@ External accounts/credentials may still require user action.
 | --- | --- |
 | 0 | PASS: remote import, exact tree and fresh-clone recovery verified. |
 | 1 | PASS: pinned baseline established with documented platform fixes. |
-| 2 | Free engineering authorized after Gate 1 validation passes. |
+| 2 | PASS: signer-free readonly, recovery tests and real Base reads verified. |
 | 3 | Free engineering authorized after Gate 2 validation passes. |
 | 4 | Free engineering authorized after Gate 3 validation passes. |
 | 5 | Free engineering authorized after Gate 4 validation passes. |

@@ -50,8 +50,8 @@ describe('loadConfig', () => {
   it('fails loud on each missing required var', () => {
     expect(() => loadConfig(baseEnv({ CHAIN_ID: undefined }))).toThrow(/CHAIN_ID/)
     expect(() => loadConfig(baseEnv({ RPC_URL: undefined }))).toThrow(/RPC_URL/)
-    expect(() => loadConfig(baseEnv({ LIQUIDATOR_PRIVATE_KEY: undefined }))).toThrow(
-      /LIQUIDATOR_PRIVATE_KEY/
+    expect(loadConfig(baseEnv({ LIQUIDATOR_PRIVATE_KEY: undefined })).executionMode).toBe(
+      'readonly'
     )
   })
 
@@ -77,9 +77,15 @@ describe('loadConfig', () => {
   })
 
   it('rejects a malformed private key', () => {
-    expect(() => loadConfig(baseEnv({ LIQUIDATOR_PRIVATE_KEY: '0xdeadbeef' }))).toThrow(
-      /LIQUIDATOR_PRIVATE_KEY/
-    )
+    expect(() =>
+      loadConfig(
+        baseEnv({
+          EXECUTION_MODE: 'eoa',
+          LIVE_ENABLED: 'true',
+          LIQUIDATOR_PRIVATE_KEY: '0xdeadbeef'
+        })
+      )
+    ).toThrow(/LIQUIDATOR_PRIVATE_KEY/)
   })
 
   it('enables 1inch on its key alone', () => {
@@ -98,7 +104,9 @@ describe('loadConfig', () => {
   })
 
   it('throws when no venue is enabled and detection-only is not opted into', () => {
-    expect(() => loadConfig(baseEnv({ ZEROX_API_KEY: undefined }))).toThrow(/No venues enabled/)
+    expect(() => loadConfig(baseEnv({ EXECUTION_MODE: 'eoa', ZEROX_API_KEY: undefined }))).toThrow(
+      /No venues enabled/
+    )
   })
 
   it('boots detection-only (no enabled venues) when ALLOW_DETECTION_ONLY=true', () => {

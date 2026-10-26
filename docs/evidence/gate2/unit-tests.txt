@@ -1,0 +1,7 @@
+RUN  v4.1.11 C:/Users/RDP/Desktop/morpho-base-zero-upfront
+
+
+ Test Files  69 passed (69)
+      Tests  884 passed (884)
+   Start at  21:19:54
+   Duration  121.52s (transform 5.52s, setup 0ms, import 81.71s, tests 17.67s, environment 8ms)

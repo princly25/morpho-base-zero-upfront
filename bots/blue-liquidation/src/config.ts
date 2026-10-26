@@ -4,7 +4,7 @@ import type { Address, Chain, Hex } from 'viem'
 
 import { Executor } from '@repo/contracts'
 import { tryCatch } from '@repo/utils'
-import { defineChain, getAddress, isAddress, isHex, parseGwei } from 'viem'
+import { defineChain, getAddress, isAddress, isHex, parseGwei, zeroAddress } from 'viem'
 import { base } from 'viem/chains'
 
 // Swap venues are no longer a per-collateral config file: candidates come from the Morpho GraphQL
@@ -153,12 +153,16 @@ export type ProbeConfig = {
 }
 
 export type Config = {
+  executionMode: 'readonly' | 'sponsored' | 'eoa'
+  readOnly: boolean
+  liveEnabled: boolean
+  profitWallet: Address | undefined
   chainId: number
   chain: Chain
   morpho: Address
   rpcUrl: string
   rpcUrlFallback: string | undefined
-  liquidatorPrivateKey: Hex
+  liquidatorPrivateKey: Hex | undefined
   executooorAddress: Address
   /** Borrower-candidate discovery (the Morpho GraphQL `marketPositions` query). */
   discovery: DiscoveryConfig
@@ -307,13 +311,33 @@ export function loadConfig(
 
   const rpcUrl = required(env, 'RPC_URL')
 
-  const liquidatorPrivateKey = required(env, 'LIQUIDATOR_PRIVATE_KEY')
-  if (
-    !isHex(liquidatorPrivateKey, { strict: true }) ||
-    liquidatorPrivateKey.length !== PRIVATE_KEY_HEX_LENGTH
-  ) {
-    throw new Error('LIQUIDATOR_PRIVATE_KEY must be a 0x-prefixed 32-byte hex string')
+  const executionMode = env.EXECUTION_MODE?.trim() || 'readonly'
+  if (executionMode !== 'readonly' && executionMode !== 'sponsored' && executionMode !== 'eoa') {
+    throw new Error('EXECUTION_MODE must be readonly, sponsored or eoa')
   }
+  const readOnly = boolEnv(env, 'READ_ONLY', executionMode === 'readonly')
+  const liveEnabled = boolEnv(env, 'LIVE_ENABLED', false)
+  if (readOnly !== (executionMode === 'readonly') || (readOnly && liveEnabled)) {
+    throw new Error('Conflicting execution mode, READ_ONLY or LIVE_ENABLED')
+  }
+  // No secret is read or returned outside explicitly live EOA configuration.
+  // Startup still hard-blocks EOA/sponsored execution until later approved gates.
+  let liquidatorPrivateKey: Hex | undefined
+  if (executionMode === 'eoa' && liveEnabled) {
+    const key = required(env, 'LIQUIDATOR_PRIVATE_KEY')
+    if (!isHex(key, { strict: true }) || key.length !== PRIVATE_KEY_HEX_LENGTH) {
+      throw new Error('LIQUIDATOR_PRIVATE_KEY must be a 0x-prefixed 32-byte hex string')
+    }
+    liquidatorPrivateKey = key
+  }
+  const recipient = env.PROFIT_WALLET?.trim()
+  if (
+    recipient &&
+    (!isAddress(recipient, { strict: false }) || getAddress(recipient) === zeroAddress)
+  ) {
+    throw new Error('PROFIT_WALLET must be a nonzero EVM address')
+  }
+  const profitWallet = recipient ? getAddress(recipient) : undefined
 
   // The Executor singleton has a deterministic CREATE2 address (soltag bakes the canonical factory +
   // salt into `Executor.with()`), so EXECUTOOOR_ADDRESS is optional — we default to that derived
@@ -342,7 +366,7 @@ export function loadConfig(
   // DETECT liquidatable positions, never act on them — that degraded posture must be opted into
   // explicitly (`ALLOW_DETECTION_ONLY=true`); otherwise fail loud rather than silently run unarmed
   // (a rotated/forgotten key must not quietly disable liquidations).
-  const allowDetectionOnly = boolEnv(env, 'ALLOW_DETECTION_ONLY', false)
+  const allowDetectionOnly = boolEnv(env, 'ALLOW_DETECTION_ONLY', readOnly)
   const enabledVenues: Venue[] = []
   // LiFi first: broadest aggregator coverage, so it is the default cold-cache order before the probe
   // selector ranks by actual output. 0x and 1inch follow. LiFi works keyless, so it is enabled by
@@ -412,6 +436,10 @@ export function loadConfig(
   }
 
   return {
+    executionMode,
+    readOnly,
+    liveEnabled,
+    profitWallet,
     chainId,
     chain: chainConfig.chain,
     morpho: chainConfig.morpho,
