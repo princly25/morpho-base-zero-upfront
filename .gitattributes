@@ -1,0 +1,3 @@
+# Preserve the exact user specification across Windows/Linux checkouts.
+# Its arithmetic example contains seven '=' characters, so use longer real merge markers.
+README.md text eol=lf conflict-marker-size=32

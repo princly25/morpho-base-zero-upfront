@@ -1,0 +1,32 @@
+# soltag/tsdown handle the real compilation & ABI extraction; `forge build` is
+# NOT part of this package's build. The compiler settings below exist for ONE
+# reason: so that `forge build` + `forge verify-contract` reproduce the exact
+# bytecode soltag deployed, making block-explorer source verification a one-liner
+# (no settings archaeology). They MUST mirror soltag's effective settings:
+#   - solc 0.8.35            -> root package.json `catalog.solc`
+#   - optimizer on, runs=200 -> scripts/build.ts (soltag transform options)
+#   - evm_version = osaka    -> solc 0.8.35's *default* (soltag passes none); keep
+#                               in lockstep with the catalog solc pin if bumped
+#   - bytecode_hash = none   -> scripts/build.ts (soltag transform options)
+#   - cbor_metadata = false  -> scripts/build.ts (soltag transform options); with
+#                               both, solc appends no metadata, so only a change in
+#                               generated code can move a CREATE2 address here — not
+#                               source text, not the solc version
+# With no metadata, `forge build` reproduces soltag's bytecode exactly, so explorer
+# verification is a full match. The `[profile.default]` block also lets `forge fmt
+# solidity/` run.
+
+[profile.default]
+src = "solidity"
+out = "out"
+libs = []
+solc = "0.8.35"
+optimizer = true
+optimizer_runs = 200
+evm_version = "osaka"
+bytecode_hash = "none"
+cbor_metadata = false
+
+[fmt]
+line_length = 120
+wrap_comments = true

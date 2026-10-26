@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/morpho-org/morpho-bots",
+  "commit": "08d0a415d6d027f7e401fd6a904b09bedb441668",
+  "label": "release: quoter-bot-341",
+  "mainAtInspection": "c1ee8a163eeb1632677337a89cf2a4cf6b70a2fa",
+  "checkedAt": "2026-10-26",
+  "adoptedNewerMain": false,
+  "nodeVersion": "24.18.1",
+  "nodeEngine": "^24.14.1",
+  "packageManager": "pnpm@11.11.0",
+  "readmeSha256": "cd6165f352b020feaf514837b1d4d29639d68baf974e13e516d872733bd04c3d",
+  "historyArchive": "source-history/initial-git-history.bundle",
+  "historyArchiveSha256": "6ead5e1d17e3bfb6f53c23d82ef216b64296d8228e3f3233a7bd15bdbe80e6f8",
+  "originalCheckpoint": "ebce54ee9e02ba34476722732480875ebc3ab4c4"
+}
