@@ -34,7 +34,7 @@ async function publishConnectorCheckpoint({ parent, message, chunks, expectedTre
   }
   const checkpoint = JSON.parse(encoded)
   if (checkpoint.tree !== expectedTree) throw new Error('Staged source tree changed')
-  let treeSha = null
+  let treeSha = checkpoint.baseTree ?? null
   let batch = []
   let batchBytes = 0
   async function flush() {
@@ -46,7 +46,9 @@ async function publishConnectorCheckpoint({ parent, message, chunks, expectedTre
   }
   for (const entry of checkpoint.entries) {
     const item = { path: entry.path, mode: entry.mode, type: 'blob' }
-    if (entry.base64 !== undefined) {
+    if (entry.delete) {
+      item.sha = null
+    } else if (entry.base64 !== undefined) {
       await flush()
       const blob = unwrap(await tools.mcp__codex_apps__github_create_blob({ link_id, repository_full_name, content: entry.base64, encoding: 'base64' }))
       item.sha = blob.sha ?? blob.blob_sha

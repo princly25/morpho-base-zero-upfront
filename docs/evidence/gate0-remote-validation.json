@@ -1,0 +1,105 @@
+{
+  "gate": 0,
+  "status": "PASS",
+  "head": "5ba7368f6050ae9e51e8bc88f2253effdad188fc",
+  "checks": [
+    {
+      "check": "pinned baseline",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "original Git history archived",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "development branch",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "upstream push disabled",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "complete specification checksum",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "all 40 specification sections",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "project records",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "governing agent instructions",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "upstream source untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "Apache license preserved",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "upstream README archived",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "upstream workflows archived",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no active inherited workflows",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "target configuration stays disabled",
+      "status": "PASS",
+      "detail": "Documentation only; upstream mode enforcement is not yet implemented"
+    },
+    {
+      "check": "secret path exclusions",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "environment example trackable",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "diff whitespace",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "remote checkpoint equality",
+      "status": "PASS",
+      "detail": "5ba7368f6050ae9e51e8bc88f2253effdad188fc"
+    },
+    {
+      "check": "working tree committed",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "scope": "Project governance only; not application, chain, execution or sponsorship validation",
+  "recordedAt": "2026-10-26T20:52:39.443677+00:00",
+  "recovery": "Fresh public GitHub clone; original Git objects restored from the committed bundle; all validation run without the source VM Git database"
+}

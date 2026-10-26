@@ -2,7 +2,7 @@
 
 Last updated: 2026-10-26 UTC.
 
-## G0-REMOTE: destination resolved; preservation being verified
+## G0-REMOTE: RESOLVED
 
 The user confirmed princly25/morpho-base-zero-upfront. Connected GitHub metadata
 verified owner princly25, admin/push permissions, public visibility and an empty
@@ -14,7 +14,7 @@ initialized BOOTSTRAP.md at e7a5bec0c8cb9575c21cb36f1ae460a315c2f45e. A direct b
 from the upstream SHA returned 422 Object does not exist. A complete original-history
 bundle and exact-source connector import are the selected safe fallback.
 
-No user action or payment is currently needed. Finish the import, compare remote
-tree SHA with git write-tree, fetch and compare branch SHAs, and verify the history
-archive. Do not claim backup success until these checks complete. See DECISIONS.md
-and source-history/README.md. Mainnet, paid obligations and deployments remain locked.
+Resolved: import 5ba7368f6050ae9e51e8bc88f2253effdad188fc was fetched and its tree
+matched 63361be8976312df769a6576790bf2a2b3c6a0cd exactly. Remote and local SHAs
+matched, working tree was clean, bundle verification passed, and all 19 Gate 0
+checks passed. No user action or payment is needed. See source-history/README.md. Mainnet, paid obligations and deployments remain locked.

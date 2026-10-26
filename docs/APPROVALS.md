@@ -15,7 +15,7 @@ External accounts/credentials may still require user action.
 
 | Gate | Authorization/status |
 | --- | --- |
-| 0 | Authorized; remote import/verification in progress. |
+| 0 | PASS: remote import, exact tree and fresh-clone recovery verified. |
 | 1 | Free engineering authorized after Gate 0 validation passes. |
 | 2 | Free engineering authorized after Gate 1 validation passes. |
 | 3 | Free engineering authorized after Gate 2 validation passes. |

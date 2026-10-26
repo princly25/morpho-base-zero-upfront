@@ -1,18 +1,17 @@
 # Next steps
 
-1. Resolve G0-REMOTE in docs/BLOCKERS.md. Do not choose an unrelated repository.
-2. Inspect confirmed repository owner, permissions, default branch, existing README,
-   history and source changes. Preserve useful existing content and approvals audit.
-3. Configure origin to the clean confirmed princly25 repository URL. Keep upstream
-   pushurl DISABLED. Use branch codex/morpho-base-zero-upfront.
-4. Run `python tools/validate_gate0.py`, inspect `git diff` and staged paths, then
-   Gitleaks dir and staged scans. Resolve any finding without committing secrets.
-5. Commit updated records and checkpoint; push only the development branch. Verify
-   remote branch SHA equals `git rev-parse HEAD`, and record evidence honestly.
-6. Report Gate 0 PASS only when remote preservation is confirmed. Request the exact
-   approval `APPROVE GATE 0`. Wait before beginning Gate 1 engineering.
+Current gate: 1. Gate 0 passed; latest user instruction authorizes routine engineering.
 
-After that approval, Gate 1 begins with pinned toolchain installation and an audit
-of the actual scripts and implementation paths. Do not run the upstream bot or
-deployment scripts. Node pin: 24.18.1. Package manager: pnpm@11.11.0. Gate 1 must
-record install/build/lint/typecheck/unit/non-fixture results separately.
+1. Install Node 24.18.1 and pnpm 11.11.0 using official artifacts and verify versions.
+2. Install unchanged lockfile dependencies with pnpm install --frozen-lockfile.
+3. Run the scripts actually declared in pinned package manifests: build, lint,
+   typecheck, unit/non-fixture suites. Record PASS/FAIL/SKIPPED independently.
+4. Audit discovery, state, sizing, quote, callback encoder, simulation, submission,
+   signer initialization, recipient selection, Executor source and fork harness.
+5. Diagnose reproducible failures from local source and primary documentation.
+   Keep baseline results separate from any validated platform fix.
+6. Update docs, review/secret-scan, export incremental staged checkpoint through
+   tools/connector_checkpoint.py, publish with the authorized connector, fetch and
+   compare remote/local SHAs. Proceed sequentially after gate evidence passes.
+
+No mainnet sends, deployments, paid obligations, or user-funded fallback.

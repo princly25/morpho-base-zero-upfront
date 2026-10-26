@@ -1,44 +1,31 @@
 # Progress
 
 Last updated: 2026-10-26 UTC.
+Current gate: **Gate 1 — verified upstream baseline**. Status: **IN PROGRESS**.
 
-Current gate: **Gate 0 — controlled project restart**.
-Status: **BLOCKED on repository destination; local restart prepared**.
+Gate 0: PASS at remote/local commit 5ba7368f6050ae9e51e8bc88f2253effdad188fc.
+All 841 tracked files were imported; exact canonical Git tree SHA is
+63361be8976312df769a6576790bf2a2b3c6a0cd. Clean working tree and remote equality were
+verified. Original history is a complete checksummed bundle in source-history.
+No useful original commits or source were lost. See VALIDATION.md and evidence.
 
-## Completed
+User confirmed princly25/morpho-base-zero-upfront and authorized routine free
+engineering without repeated permission. Mainnet and financial actions remain locked.
 
-- Created Desktop/morpho-base-zero-upfront as a complete clone of the maintained
-  upstream repository, preserving its Git history and Apache-2.0 license.
-- Independently verified researched commit
-  `08d0a415d6d027f7e401fd6a904b09bedb441668`, release: quoter-bot-341.
-- Created development branch `codex/morpho-base-zero-upfront` at that commit.
-- Compared pinned source with observed upstream main; did not adopt newer source.
-- Replaced root README with the entire user specification, including all 40 sections.
-- Preserved upstream root README and workflows in docs/upstream; disabled inherited
-  CI/publishing triggers by moving the workflow files outside .github/workflows.
-- Created all ten required project records, immutable upstream lock, target-only
-  environment example, secret exclusions and restart instructions.
-- Confirmed connected GitHub identity princly25 and repository write permissions
-  available through the connector. No Morpho destination was identified.
-- Disabled the upstream remote's push URL. No money, keys or transactions used.
+## GitHub
 
-## Commit
+Repository: https://github.com/princly25/morpho-base-zero-upfront
+Branch: codex/morpho-base-zero-upfront. Current commit: git rev-parse HEAD.
+Last verified remote checkpoint: 5ba7368f6050ae9e51e8bc88f2253effdad188fc.
+Standard Git lacks authentication. The authorized connector publishes exact trees
+with parent checks; public Git fetch verifies them. No credentials are extracted.
 
-Baseline: `08d0a415d6d027f7e401fd6a904b09bedb441668`.
-Current checkpoint: resolve with `git rev-parse HEAD`; the restart checkpoint carries
-the message `docs: restart morpho zero-upfront project from verified research`.
-Remote checkpoint: **NOT CONFIRMED**. Do not treat local work as a durable backup.
+## Current work
 
-## Validation
+Install exact Node 24.18.1 and pnpm 11.11.0, run applicable pinned upstream scripts,
+and record each result separately. Application source is unchanged. No bot startup,
+signing, transaction, deployment or paymaster operation has been attempted.
 
-See docs/VALIDATION.md and docs/evidence. Gitleaks working-tree, staged checkpoint
-and pinned-history scans: PASS, zero findings. All 17 local project-control checks
-pass; remote backup remains BLOCKED. The checker intentionally returns exit 2.
-Application install/build/lint/typecheck/tests: SKIPPED; Gate 1 is not approved.
-No claim of functional readonly, Executor identity, profitability or sponsorship.
-
-## Blocker and next action
-
-User must identify an exact princly25 repository destination (or create an empty
-private repository). Complete remote preservation, verify the branch head, then
-request `APPROVE GATE 0`. Do not begin Gate 1 before that approval.
+Tests: Gate 0 passed 19 checks at the clean imported checkpoint; Gitleaks tree,
+staged and original-history scans passed. Gate 1 application suites not yet run.
+Cost and user-funded capital: $0. No active external blocker.

@@ -2,7 +2,8 @@
 
 Confirmed origin: https://github.com/princly25/morpho-base-zero-upfront.git
 Development branch: codex/morpho-base-zero-upfront.
-Initial connector import is in progress; verify evidence before assuming backup.
+Initial import verified at 5ba7368f6050ae9e51e8bc88f2253effdad188fc. A fresh-clone
+recovery passed all 19 Gate 0 checks; see docs/evidence/gate0-remote-validation.json.
 
 ## Recover on another VM
 

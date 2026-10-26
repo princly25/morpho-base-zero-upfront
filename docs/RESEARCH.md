@@ -13,6 +13,8 @@ All checks below occurred 2026-10-26 UTC. Sources are primary.
 | GitHub connected-account API | princly25 authenticated; accessible repositories enumerated with push permissions. No Morpho repo in returned set. CLI auth is separately unavailable. | checked 2026-10-26 |
 | [Gitleaks official release](https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1) | Windows scanner downloaded from official release and SHA256 checked against official checksums before running. | 8.30.1 |
 | [Git attributes documentation](https://git-scm.com/docs/gitattributes) | README-only LF checkout preserves its checksum; conflict-marker-size=32 distinguishes actual merge markers from the user's seven-equals arithmetic separator. | installed Git 2.56.0 |
+| [Node official artifacts](https://nodejs.org/dist/v24.18.1/) | Windows x64 ZIP checked against official SHASUMS256.txt, SHA256 ec56b84a7551893ab2324ebdfdc4ab974a63b4781162600b68a1293cc3e53765; executable reports v24.18.1. | 24.18.1 |
+| Official npm registry, pnpm@11.11.0 | Installed the exact pinned manager into local development tools with dependency scripts disabled; executable reports 11.11.0. No package-manager upgrade adopted. | 11.11.0 |
 
 Comparison: blue-liquidation/src is unchanged between baseline and observed main,
 but package/build files, fork harness, Helm material and shared bot-kit/swaps files

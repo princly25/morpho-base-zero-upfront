@@ -4,8 +4,8 @@ Date: 2026-10-26. Current gate: 0. **NOT READY. No mainnet send is authorized.**
 
 | Required proof | Status |
 | --- | --- |
-| Remote backup of this restart | BLOCKED: destination unknown |
-| Gate 0 completion approval | PENDING |
+| Remote backup of this restart | PASS: exact source tree and fresh-clone recovery verified |
+| Gate 0 completion approval | User authorized continuation without routine gate questions |
 | Baseline install/build/lint/typecheck/test suites | NOT RUN |
 | Signer-free readonly and zero signing/broadcasts | NOT IMPLEMENTED |
 | Correct chain and Morpho contracts verified on-chain | NOT VERIFIED |

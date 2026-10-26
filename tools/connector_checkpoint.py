@@ -23,7 +23,7 @@ def git(*args: str) -> bytes:
     return subprocess.check_output(["git", *args], cwd=ROOT)
 
 
-def prepare() -> None:
+def prepare(incremental: bool = False) -> None:
     tree = git("write-tree").decode().strip()
     entries = []
     for line in git("ls-tree", "-rz", tree).split(b"\0"):
@@ -34,6 +34,11 @@ def prepare() -> None:
         if kind != "blob":
             raise SystemExit("Unsupported non-blob Git tree entry")
         entries.append({"path": path.decode(), "mode": mode, "sha": sha})
+    deleted = []
+    if incremental:
+        changed = set(p.decode() for p in git("diff", "--cached", "--name-only", "-z").split(b"\0") if p)
+        deleted = [{"path": p.decode(), "mode": "100644", "delete": True} for p in git("diff", "--cached", "--name-only", "--diff-filter=D", "-z").split(b"\0") if p]
+        entries = [e for e in entries if e["path"] in changed]
     request = "".join(e["sha"] + "\n" for e in entries).encode()
     data = subprocess.check_output(["git", "cat-file", "--batch"], cwd=ROOT, input=request)
     stream = io.BytesIO(data)
@@ -49,7 +54,9 @@ def prepare() -> None:
             entry["content"] = content
         except UnicodeError:
             entry["base64"] = base64.b64encode(blob).decode()
-    result = {"tree": tree, "parent": git("rev-parse", "HEAD").decode().strip(), "entries": entries}
+    entries.extend(deleted)
+    result = {"tree": tree, "parent": git("rev-parse", "HEAD").decode().strip(), "entries": entries,
+              "baseTree": git("rev-parse", "HEAD^{tree}").decode().strip() if incremental else None}
     EXPORT.parent.mkdir(exist_ok=True)
     EXPORT.write_text(json.dumps(result, ensure_ascii=True, separators=(",", ":")), encoding="utf-8")
     size = EXPORT.stat().st_size
@@ -60,9 +67,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("operation", choices=("prepare", "chunk", "script"))
     parser.add_argument("--index", type=int, default=0)
+    parser.add_argument("--incremental", action="store_true")
     args = parser.parse_args()
     if args.operation == "prepare":
-        prepare()
+        prepare(args.incremental)
     elif args.operation == "script":
         print((ROOT / "tools/connector-publish.js").read_text(encoding="utf-8"))
     else:

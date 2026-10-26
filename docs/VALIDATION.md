@@ -2,6 +2,28 @@
 
 Date: 2026-10-26 UTC. Current gate: 0. These results do not establish a working bot.
 
+## Gate 0 completion — PASS
+
+Remote checkpoint: 5ba7368f6050ae9e51e8bc88f2253effdad188fc, branch
+codex/morpho-base-zero-upfront, repository princly25/morpho-base-zero-upfront.
+Canonical local/remote source tree: 63361be8976312df769a6576790bf2a2b3c6a0cd.
+All 841 tracked files are present, including the complete original-history bundle.
+Local and remote branch SHAs matched and the working tree was clean.
+
+Recovery independently tested by cloning the published branch into a separate
+directory and restoring original Git objects from the committed bundle. All 19
+Gate 0 checks passed with exit 0, without relying on this worktree's Git database.
+See docs/evidence/gate0-remote-validation.json. Earlier BLOCKED entries below are
+the initial diagnostic history; the destination and backup blockers are resolved.
+
+Standard Git push could not authenticate. An authorized connector write initialized
+the empty user repository and published the exact source tree. Original commits
+remain in the checked archive rather than being silently rewritten. No app token
+or user secret was copied. User cost and trading capital used: $0.
+
+The user's later autonomy instruction authorizes proceeding with free engineering
+after sequential validation, without repeated exact-word gate questions.
+
 ## Gate 0 evidence
 
 | Check | Result | Evidence/reproduction |
