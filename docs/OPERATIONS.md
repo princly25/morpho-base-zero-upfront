@@ -16,14 +16,17 @@ recovery passed all 19 Gate 0 checks; see docs/evidence/gate0-remote-validation.
    verification/fetch commands in source-history/README.md to restore baseline Git
    objects. If upstream is absent, add its public Morpho URL and set its pushurl to
    DISABLED. Never reset to upstream main or push upstream release tags.
-6. Run `python tools/validate_gate0.py`. Install a supported Python if absent.
+6. Read the recorded Gate 0 recovery evidence. Its validator checks unmodified
+   baseline source and should be run at the Gate 0 checkpoint, not after later
+   authorized feature changes. At newer checkpoints run the gate-specific tests
+   recorded in PROGRESS.md and docs/evidence. Install Python if needed.
 7. After Gate 0 validation passes, install Node 24.18.1 and pnpm 11.11.0, verify their
    versions, and install pinned dependencies with `pnpm install --frozen-lockfile`.
    Run the actual baseline scripts selected from package.json in Gate 1.
 8. Restore any later-authorized local environment through a secure channel. Never
    retrieve secrets from Git or request a recipient's private key. Readonly must
    not need a private key. At Gate 0 no secrets exist or are required.
-9. Verify intended chain 8453 in target configuration. On-chain verification and
+9. Verify intended chain 8453 in target configuration. onchain verification and
    runtime mode enforcement remain later-gate work; do not start the upstream bot.
 10. Resume the exact authorized gate, respecting explicit approvals.
 

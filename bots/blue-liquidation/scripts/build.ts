@@ -19,7 +19,7 @@ rmSync(DIST_DIR, { recursive: true, force: true })
 
 const ESCAPED = ROOT.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 // This bot's own TS sources only — bundled workspace deps ship prebuilt dist and hold no templates.
-const INCLUDE = new RegExp(`^${ESCAPED}/(?:src|scripts)/.*\\.tsx?$`)
+const INCLUDE = new RegExp(`^${ESCAPED}[\\\\/](?:src|scripts)[\\\\/].*\\.tsx?$`)
 
 const soltagPlugin: Plugin = {
   name: 'soltag',

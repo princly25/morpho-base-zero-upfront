@@ -1,4 +1,4 @@
-# Live readiness — LOCKED
+# Live readiness â€” LOCKED
 
 Date: 2026-10-26. Current gate: 0. **NOT READY. No mainnet send is authorized.**
 
@@ -6,9 +6,9 @@ Date: 2026-10-26. Current gate: 0. **NOT READY. No mainnet send is authorized.**
 | --- | --- |
 | Remote backup of this restart | PASS: exact source tree and fresh-clone recovery verified |
 | Gate 0 completion approval | User authorized continuation without routine gate questions |
-| Baseline install/build/lint/typecheck/test suites | NOT RUN |
+| Baseline install/build/lint/typecheck/test suites | PASS for Blue and dependencies; historical fork SKIPPED |
 | Signer-free readonly and zero signing/broadcasts | NOT IMPLEMENTED |
-| Correct chain and Morpho contracts verified on-chain | NOT VERIFIED |
+| Correct chain and Morpho contracts verified onchain | NOT VERIFIED |
 | Deterministic shared Executor address/runtime hash | NOT VERIFIED |
 | Canonical native Base USDC, decimals and code | NOT VERIFIED |
 | PROFIT_WALLET identity and configuration | NOT CONFIGURED |

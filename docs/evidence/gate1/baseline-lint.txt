@@ -1,0 +1,8 @@
+$ oxlint --no-error-on-unmatched-pattern && pnpm run lint:playground-smoke && pnpm --filter @repo/oxlint-plugin run check:markdown
+Found 0 warnings and 0 errors.
+Finished in 16.4s on 680 files with 166 rules using 2 threads.
+$ oxlint --config bots/quoter-bot/scripts/playground-smoke.oxlintrc.json bots/quoter-bot/scripts/playground-smoke*.mjs
+No files found to lint. Please check your paths and ignore patterns.
+Finished in 4ms on 0 files with 1 rules using 2 threads.
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.

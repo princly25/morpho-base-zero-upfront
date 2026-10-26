@@ -1,0 +1,24 @@
+Compiling 6 files with Solc 0.8.35
+Solc 0.8.35 finished in 2.25s
+Compiler run successful!
+
+Ran 16 tests for test/CrossedBooksResolver.t.sol:CrossedBooksResolverTest
+[PASS] testConsumesCallbackBeforeExternalCalls() (gas: 299421)
+[PASS] testConsumesTheExactMidnightAllowance() (gas: 271610)
+[PASS] testDoesNotUsePreexistingBalanceToSubsidizeUnprofitableCross() (gas: 270833)
+[PASS] testPreservesPreexistingBalance() (gas: 272365)
+[PASS] testRejectsCallbackOutsideActiveResolution() (gas: 18093)
+[PASS] testRejectsDifferentMarkets() (gas: 35443)
+[PASS] testRejectsEmptyOfferArrays() (gas: 8954)
+[PASS] testRejectsUnbalancedUnits() (gas: 32676)
+[PASS] testRejectsWrongMarketIdCallback() (gas: 211305)
+[PASS] testRejectsWrongSides() (gas: 28156)
+[PASS] testRejectsZeroUnits() (gas: 27817)
+[PASS] testResolveIsPermissionlessAndPaysCaller() (gas: 770681)
+[PASS] testResolveMultipleOffersRecursively() (gas: 394141)
+[PASS] testResolveReturnsProfitAndNoUnits() (gas: 274025)
+[PASS] testRevertsBelowMinimumProfitAtomically() (gas: 327714)
+[PASS] testRevertsWhenProfitIsZeroEvenWithZeroMinimum() (gas: 327639)
+Suite result: ok. 16 passed; 0 failed; 0 skipped; finished in 39.61ms (8.11ms CPU time)
+
+Ran 1 test suite in 43.20ms (39.61ms CPU time): 16 tests passed, 0 failed, 0 skipped (16 total tests)

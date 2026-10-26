@@ -1,17 +1,19 @@
 # Next steps
 
-Current gate: 1. Gate 0 passed; latest user instruction authorizes routine engineering.
+Current gate: 2. Gate 1 validation passed; persist its checkpoint before new features.
 
-1. Install Node 24.18.1 and pnpm 11.11.0 using official artifacts and verify versions.
-2. Install unchanged lockfile dependencies with pnpm install --frozen-lockfile.
-3. Run the scripts actually declared in pinned package manifests: build, lint,
-   typecheck, unit/non-fixture suites. Record PASS/FAIL/SKIPPED independently.
-4. Audit discovery, state, sizing, quote, callback encoder, simulation, submission,
-   signer initialization, recipient selection, Executor source and fork harness.
-5. Diagnose reproducible failures from local source and primary documentation.
-   Keep baseline results separate from any validated platform fix.
-6. Update docs, review/secret-scan, export incremental staged checkpoint through
-   tools/connector_checkpoint.py, publish with the authorized connector, fetch and
-   compare remote/local SHAs. Proceed sequentially after gate evidence passes.
+1. Publish/fetch the reviewed Gate 1 platform fixes and evidence via the connector.
+2. Replace the startup dependency graph with a readonly entrypoint. Retain the old
+   sender implementation as isolated reference, unreachable from startup until
+   subsequent transport gates. Never initialize signer or nonce state in readonly.
+3. Make key requirements conditional on EOA plus live-enabled configuration, while
+   retaining hard-deny live controls until final authority. Reject contradictory flags.
+4. Reuse GraphQL discovery, onchain parameter resolution, fresh lens, sizing and
+   routing. Produce bounded durable observations with hypothetical economics marked
+   incomplete until complete cost modeling is implemented.
+5. Test no-key startup and a read-method allowlist; record zero signatures, nonce
+   reservations and broadcast attempts. Test recoverable API/RPC/rate-limit/timeout/
+   malformed/duplicate/stale candidate cases. Observe real Base using public reads.
+6. Build/lint/typecheck/test, update records, scan and publish each validated checkpoint.
 
-No mainnet sends, deployments, paid obligations, or user-funded fallback.
+Mainnet transactions, deployments, paid obligations and funded fallback stay locked.

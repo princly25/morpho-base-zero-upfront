@@ -2,7 +2,7 @@
 
 Date: 2026-10-26 UTC. Current gate: 0. These results do not establish a working bot.
 
-## Gate 0 completion — PASS
+## Gate 0 completion â€” PASS
 
 Remote checkpoint: 5ba7368f6050ae9e51e8bc88f2253effdad188fc, branch
 codex/morpho-base-zero-upfront, repository princly25/morpho-base-zero-upfront.
@@ -80,18 +80,36 @@ Install: SKIPPED. Build: SKIPPED. Lint: SKIPPED. Typecheck: SKIPPED.
 Unit/non-fixture/fork tests: SKIPPED. Gate 1 is not authorized.
 No scanner, signer, Base RPC transaction, deployment or paymaster experiment run.
 
-## Executor identity — NOT VALIDATED
+## Executor identity â€” NOT VALIDATED
 
 | Field | Value |
 | --- | --- |
-| Intended chain ID | 8453; not queried on-chain in Gate 0 |
+| Intended chain ID | 8453; not queried onchain in Gate 0 |
 | Block number | NOT QUERIED |
 | Researched Executor | 0x844124693a429CB9eD04472a23d6aEBFd1395dFe |
 | Expected runtime code hash | NOT COMPILED |
 | Actual runtime code hash | NOT QUERIED |
-| Result | UNVERIFIED — execution prohibited |
+| Result | UNVERIFIED â€” execution prohibited |
 | Record date | 2026-10-26 |
 | Source commit | 08d0a415d6d027f7e401fd6a904b09bedb441668 |
 
 Gate 3 must fill this table with reproducible compilation, deterministic address
 derivation and Base RPC hash equality evidence. Non-empty code alone does not pass.
+
+## Gate 1 completion — PASS
+
+Exact Node 24.18.1 and pnpm 11.11.0 installed; unchanged frozen dependency lockfile.
+Application/dependency build, full repository lint, relevant typechecks, 854 unit
+tests in 66 files, 83 additional regression/harness/lint-plugin tests in 13 files
+and 16 local shared Solidity tests passed. New production-artifact regression
+compiles the actual bot/probe without starting either. Existing compiled address
+assertions pass. See docs/evidence/gate1/results.json and UPSTREAM_AUDIT.md.
+
+Original Windows build/lint failures are preserved separately from fixed outputs.
+Changes are build-tooling portability, exact smoke-file expansion, the production
+build regression, and an editorial exception for the immutable root specification.
+No core financial logic, contract source or dependency versions changed.
+
+Historical Base liquidation fork integration is SKIPPED for missing archive URL and
+borrower fixture. It is not counted as a pass; deterministic callback proof remains
+Gate 4. No mainnet transaction, deployment or funded operation was performed.

@@ -1,0 +1,13 @@
+Scope: 6 of 18 workspace projects
+packages/utils typecheck$ tsc --noEmit
+packages/contracts typecheck$ soltag && tsc --noEmit
+packages/utils typecheck: Done
+packages/contracts typecheck: .soltag/types.d.ts is up to date
+packages/contracts typecheck: Done
+packages/bot-kit typecheck$ tsc --noEmit
+packages/swaps typecheck$ tsc --noEmit
+packages/swaps typecheck: Done
+packages/bot-kit typecheck: Done
+bots/blue-liquidation typecheck$ soltag && tsc --noEmit
+bots/blue-liquidation typecheck: Wrote .soltag/types.d.ts (1 contract)
+bots/blue-liquidation typecheck: Done

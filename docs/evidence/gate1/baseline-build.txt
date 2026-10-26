@@ -1,0 +1,24 @@
+Scope: 6 of 18 workspace projects
+packages/contracts build$ soltag && tsx scripts/build.ts && tsc -p tsconfig.build.json --emitDeclarationOnly
+packages/contracts build: Wrote .soltag/types.d.ts (4 contracts)
+packages/contracts build: node:internal/modules/esm/load:193
+packages/contracts build:     throw new ERR_UNSUPPORTED_ESM_URL_SCHEME(parsed, schemes);
+packages/contracts build:           ^
+packages/contracts build: Error [ERR_UNSUPPORTED_ESM_URL_SCHEME]: Only URLs with a scheme in: file, data, and node are supported by the default ESM loader. On Windows, absolute paths must be valid file:// URLs. Received protocol 'c:'
+packages/contracts build:     at throwIfUnsupportedURLScheme (node:internal/modules/esm/load:193:11)
+packages/contracts build:     at defaultLoadSync (node:internal/modules/esm/load:146:3)
+packages/contracts build:     at #loadAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:802:12)
+packages/contracts build:     at nextStep (node:internal/modules/customization_hooks:189:26)
+packages/contracts build:     at load2 (file:///C:/Users/RDP/Desktop/morpho-base-zero-upfront/node_modules/.pnpm/tsx@4.22.0/node_modules/tsx/dist/register-lJYvHe5s.mjs:2:4144)
+packages/contracts build:     at nextStep (node:internal/modules/customization_hooks:189:26)
+packages/contracts build:     at loadWithHooks (node:internal/modules/customization_hooks:374:18)
+packages/contracts build:     at #loadSync (node:internal/modules/esm/loader:825:16)
+packages/contracts build:     at ModuleLoader.load (node:internal/modules/esm/loader:783:26)
+packages/contracts build:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:494:31) {
+packages/contracts build:   code: 'ERR_UNSUPPORTED_ESM_URL_SCHEME'
+packages/contracts build: }
+packages/contracts build: Node.js v24.18.1
+packages/contracts build: Failed
+C:\Users\RDP\Desktop\morpho-base-zero-upfront\packages\contracts:
+[ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL] @repo/contracts@0.0.0 build: `soltag && tsx scripts/build.ts && tsc -p tsconfig.build.json --emitDeclarationOnly`
+Exit status 1

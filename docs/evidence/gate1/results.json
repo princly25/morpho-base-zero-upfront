@@ -1,0 +1,73 @@
+{
+  "gate": 1,
+  "status": "PASS",
+  "recordedAt": "2026-10-26T21:06:33.395034+00:00",
+  "baseline": "08d0a415d6d027f7e401fd6a904b09bedb441668",
+  "node": "24.18.1",
+  "pnpm": "11.11.0",
+  "lockfileChanged": false,
+  "checks": [
+    {
+      "command": "pnpm install --frozen-lockfile",
+      "status": "PASS",
+      "note": "18 workspace projects; supply-chain lock policy passed; unchanged lockfile"
+    },
+    {
+      "command": "pnpm --filter @morpho-org/blue-liquidation... run build",
+      "status": "PASS",
+      "initial": "FAIL on Windows; documented platform-only fixes applied"
+    },
+    {
+      "command": "pnpm run lint",
+      "status": "PASS",
+      "initial": "FAIL on cmd wildcard; exact file expansion fixed; verbatim user README excepted from editorial checking"
+    },
+    {
+      "command": "pnpm --filter @morpho-org/blue-liquidation... --if-present run typecheck",
+      "status": "PASS"
+    },
+    {
+      "command": "pnpm --filter @morpho-org/blue-liquidation run typecheck",
+      "status": "PASS",
+      "note": "Final rerun includes new production-build regression test"
+    },
+    {
+      "command": "pnpm exec vitest run bots/blue-liquidation/test packages/contracts/test packages/bot-kit/test packages/swaps/test packages/utils/test test/viem-dedupe.test.ts --exclude **/test/fork/** --exclude **/test/e2e/**",
+      "status": "PASS",
+      "files": 66,
+      "tests": 854
+    },
+    {
+      "command": "pnpm exec vitest run bots/blue-liquidation/test/build.test.ts bots/blue-liquidation/test/fork/harness.test.ts packages/oxlint-plugin/test",
+      "status": "PASS",
+      "files": 13,
+      "tests": 83
+    },
+    {
+      "command": "forge test --root packages/contracts -vv",
+      "status": "PASS",
+      "tests": 16,
+      "note": "Local EVM; shared upstream CrossedBooksResolver tests, not liquidation proof"
+    },
+    {
+      "command": "compiled Executor.with().address assertion",
+      "status": "PASS",
+      "address": "0x844124693a429CB9eD04472a23d6aEBFd1395dFe",
+      "note": "No Base onchain identity claim"
+    },
+    {
+      "command": "oxfmt --check edited tooling files",
+      "status": "PASS"
+    },
+    {
+      "command": "Base fork historical liquidation integration",
+      "status": "SKIPPED",
+      "reason": "No RPC_URL_8453/BLUE_LIQUIDATION_FORK_FIXTURE supplied; deterministic proof remains Gate 4"
+    },
+    {
+      "command": "Unrelated bots/playgrounds whole-monorepo test command",
+      "status": "SKIPPED",
+      "reason": "Outside narrow Blue application/dependency baseline; no UI/other strategy work requested"
+    }
+  ]
+}

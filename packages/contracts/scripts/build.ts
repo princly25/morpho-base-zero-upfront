@@ -2,7 +2,7 @@ import { build as esbuild } from 'esbuild'
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { transformSolTemplates } from 'soltag/unplugin'
 
 // Bundles `src/{index,v2/index}.ts` to `dist/` with the soltag `sol``` templates in `src/abis.ts`
@@ -23,7 +23,7 @@ rmSync(DIST_DIR, { recursive: true, force: true })
 
 const SRC_DIR = join(ROOT, 'src')
 const ESCAPED = SRC_DIR.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-const INCLUDE = new RegExp(`^${ESCAPED}/.*\\.tsx?$`)
+const INCLUDE = new RegExp(`^${ESCAPED}[\\\\/].*\\.tsx?$`)
 
 await esbuild({
   entryPoints: [join(SRC_DIR, 'index.ts')],
@@ -65,7 +65,10 @@ const ABIS_DIR = join(ROOT, 'abis')
 rmSync(ABIS_DIR, { recursive: true, force: true })
 mkdirSync(ABIS_DIR, { recursive: true })
 
-const bundled = (await import(join(DIST_DIR, 'index.js'))) as Record<string, unknown>
+const bundled = (await import(pathToFileURL(join(DIST_DIR, 'index.js')).href)) as Record<
+  string,
+  unknown
+>
 let abiCount = 0
 for (const [name, value] of Object.entries(bundled)) {
   if (!name.endsWith('Abi') || !Array.isArray(value)) continue

@@ -16,7 +16,7 @@ External accounts/credentials may still require user action.
 | Gate | Authorization/status |
 | --- | --- |
 | 0 | PASS: remote import, exact tree and fresh-clone recovery verified. |
-| 1 | Free engineering authorized after Gate 0 validation passes. |
+| 1 | PASS: pinned baseline established with documented platform fixes. |
 | 2 | Free engineering authorized after Gate 1 validation passes. |
 | 3 | Free engineering authorized after Gate 2 validation passes. |
 | 4 | Free engineering authorized after Gate 3 validation passes. |

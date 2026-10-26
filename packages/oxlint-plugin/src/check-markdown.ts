@@ -91,7 +91,9 @@ export const markdownFindings = (source: string) => {
 const trackedMarkdown = () =>
   execFileSync('git', ['ls-files', '-z', '*.md'], { cwd: REPO_ROOT, encoding: 'utf8' })
     .split('\0')
-    .filter(file => file !== '' && !file.startsWith(VENDORED))
+    // Root README is the user's verbatim governing specification, checksum-pinned
+    // in upstream.lock.json; do not rewrite it to satisfy editorial copy rules.
+    .filter(file => file !== '' && file !== 'README.md' && !file.startsWith(VENDORED))
 
 if (import.meta.main) {
   const argv = process.argv.slice(2).map(file => path.relative(REPO_ROOT, path.resolve(file)))

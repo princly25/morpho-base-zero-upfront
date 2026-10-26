@@ -1,0 +1,2 @@
+$ soltag && tsc --noEmit
+.soltag/types.d.ts is up to date

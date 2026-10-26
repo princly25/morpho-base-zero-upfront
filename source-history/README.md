@@ -1,4 +1,4 @@
-# Original Git history
+# Original history archive
 
 initial-git-history.bundle preserves the entire original development-branch history
 through checkpoint ebce54ee9e02ba34476722732480875ebc3ab4c4, including the pinned

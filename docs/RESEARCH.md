@@ -24,3 +24,16 @@ No newer upstream source is adopted by this restart.
 Deferred research: canonical Base USDC identity; Base RPC contract identity; Executor
 compilation/address derivation; current Viem OP Stack fee APIs; sponsorship terms.
 These are not Gate 0 validations and are not claimed as verified.
+
+Gate 1 platform research (2026-10-26):
+
+- https://nodejs.org/api/url.html#urlpathtofileurlpath-options supports conversion
+  of platform paths to ESM file URLs; tested on the pinned Node 24.18.1 runtime.
+- https://esbuild.github.io/plugins/#on-load-arguments documents platform path
+  inputs to load filters. Local diagnostic proved old filter false and portable
+  filter true for an actual Windows contract source path.
+- https://nodejs.org/api/fs.html#fsglobsyncpattern-options supports explicit glob
+  expansion; tested on Node 24.18.1. Same seven smoke files are linted on Windows.
+- Foundry 1.5.1 matches the pinned upstream CI version. Official Windows ZIP SHA256
+  293fedd9ad45eb9d774008815dbda820bddd3c85cab3baf55a0be3775e86d5ae verified against
+  GitHub release asset digest before execution. forge/anvil report 1.5.1.

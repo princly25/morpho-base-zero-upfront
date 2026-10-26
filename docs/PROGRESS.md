@@ -1,31 +1,26 @@
 # Progress
 
 Last updated: 2026-10-26 UTC.
-Current gate: **Gate 1 — verified upstream baseline**. Status: **IN PROGRESS**.
+Current gate: **Gate 2 — genuine zero-wallet readonly engine**. Status: **STARTING**.
 
-Gate 0: PASS at remote/local commit 5ba7368f6050ae9e51e8bc88f2253effdad188fc.
-All 841 tracked files were imported; exact canonical Git tree SHA is
-63361be8976312df769a6576790bf2a2b3c6a0cd. Clean working tree and remote equality were
-verified. Original history is a complete checksummed bundle in source-history.
-No useful original commits or source were lost. See VALIDATION.md and evidence.
+Gate 0: PASS. Exact GitHub source/tree equality and independent fresh-clone recovery
+passed 19 checks. Original Git history is preserved in source-history.
+Gate 1: PASS with documented Windows build/lint fixes. See UPSTREAM_AUDIT.md and
+ evidence/gate1/results.json. The core liquidation source and Solidity are unchanged.
 
-User confirmed princly25/morpho-base-zero-upfront and authorized routine free
-engineering without repeated permission. Mainnet and financial actions remain locked.
-
-## GitHub
+Checks: pinned dependency install, build, lint, dependency/app typecheck, 854 baseline
+unit tests, 83 regression/harness/lint-plugin tests and 16 local Solidity tests pass.
+Historical Base liquidation fork tests are SKIPPED pending archive fixture; this is
+not a zero-capital callback proof. Compiled Executor address matches the researched
+input, but Base runtime identity is still unverified.
 
 Repository: https://github.com/princly25/morpho-base-zero-upfront
 Branch: codex/morpho-base-zero-upfront. Current commit: git rev-parse HEAD.
-Last verified remote checkpoint: 5ba7368f6050ae9e51e8bc88f2253effdad188fc.
-Standard Git lacks authentication. The authorized connector publishes exact trees
-with parent checks; public Git fetch verifies them. No credentials are extracted.
+Last verified remote before this checkpoint: 5abe509517b1e133d5e4b0507e3172335c848b68.
+New staged checkpoint must be secret-scanned, published and fetched before proceeding.
 
-## Current work
-
-Install exact Node 24.18.1 and pnpm 11.11.0, run applicable pinned upstream scripts,
-and record each result separately. Application source is unchanged. No bot startup,
-signing, transaction, deployment or paymaster operation has been attempted.
-
-Tests: Gate 0 passed 19 checks at the clean imported checkpoint; Gitleaks tree,
-staged and original-history scans passed. Gate 1 application suites not yet run.
-Cost and user-funded capital: $0. No active external blocker.
+Next: structurally isolate readonly startup from signer/nonce/broadcast machinery,
+keep all live modes fail-closed, preserve upstream discovery/state/sizing/quote code,
+and prove real Base observation plus recoverable-error handling without credentials.
+No private key, bot launch, mainnet send, deployment or paymaster operation yet.
+User cost and user-funded trading capital used: $0. No external blocker.

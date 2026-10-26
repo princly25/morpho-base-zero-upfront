@@ -1,0 +1,7 @@
+Scope: 6 of 18 workspace projects
+packages/contracts build$ soltag && tsx scripts/build.ts && tsc -p tsconfig.build.json --emitDeclarationOnly
+packages/contracts build: .soltag/types.d.ts is up to date
+packages/contracts build: [build] wrote 2 ABI JSON file(s) to abis/
+packages/contracts build: Done
+bots/blue-liquidation build$ tsx scripts/build.ts
+bots/blue-liquidation build: Done
